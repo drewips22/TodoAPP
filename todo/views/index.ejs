@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="todo" placeholder="Tambahkan to-do" required>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <ul>
+        <% todoList.forEach((item, index) => { %>
+            <li>
+                <%= item %>
+                <form action="/delete" method="POST" style="display:inline;">
+                    <input type="hidden" name="index" value="<%= index %>">
+                    <button type="submit">Hapus</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
